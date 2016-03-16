@@ -10,7 +10,7 @@ function init() {
 	   var discount = parseInt(document.getElementById("discount").value);
        var form = new Form(name, typeInsurance, date, policyNumber, premium, discount);
 	   form.logName();
-	   if(validator.checkPolicy(typeInsurance, policyNumber)){
+	   if(Validator.checkPolicy(typeInsurance, policyNumber)){
 	   		storage.set(form);
 	   }
    };

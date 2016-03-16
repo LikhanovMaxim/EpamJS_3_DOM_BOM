@@ -1,5 +1,5 @@
 "use strict";
-var validator = (function(){
+var Validator = (function(){
 	function returnReg(typeInsurance) {
 		var reg;
 		 switch(typeInsurance){
