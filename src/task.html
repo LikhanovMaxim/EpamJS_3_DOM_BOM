@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="button.js"></script>
+    <script type="text/javascript" src="form.js"></script>
+    <script type="text/javascript" src="localStorage.js"></script>
+    <script type="text/javascript" src="validator.js"></script>
+</head>
+<body onload="init()">
+<div>
+    <label for="typeInsurance">Вид страхования</label>
+    <select id="typeInsurance">
+        <option>КАСКО</option>
+        <option>ОСАГО</option>
+        <option>ДАГО</option>
+    </select>
+</div>
+<div>
+    <label for="policyNumber">Номер полиса</label>
+    <input id="policyNumber" value="001AT-16/54126"/>
+</div>
+<div>
+    <label for="name">ФИО</label>
+    <input id="name" value="Petr"/>
+</div>
+<label for="date">Дата продажи</label>
+<input type="date" id="date" value="2016-11-03" min="2000-01-02" value=>
+
+<div>
+    <label for="premium">Страховая премия</label>
+    <input id="premium" value="20"/>
+</div>
+<div>
+    <label for="discount">Скидка</label>
+    <input id="discount" value="5"/>
+</div>
+<div>
+    <button id="login">Сохранить</button>
+</div>
+<div>
+    <button id="showTable">Показать полюса</button>
+</div>
+<div>
+    <button id="deleteTable">Удалить таблицу</button>
+</div>
+<div>
+    <label for="deletePolicy">Удалить запись(по номеру страхования)</label>
+    <input id="deletePolicy" value="001AT-16/54126"/>
+    <button id="deleteRow">Удалить</button>
+</div>
+<table border="1" id="tablePolicy">
+</table>
+</body>
+</html>
