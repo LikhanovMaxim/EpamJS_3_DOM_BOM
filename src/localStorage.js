@@ -3,27 +3,30 @@ function LocalStorage(){
   this._keys = new Array();
 }
 LocalStorage.prototype.set = function(policy){
-	this._keys.push(policy._policyNumber);
-	localStorage.setItem(policy._policyNumber, JSON.stringify(policy));
+	this._keys.push(policy._number);
+	localStorage.setItem(policy._number, JSON.stringify(policy));
+}
+LocalStorage.prototype.createTr = function(policyNumber){
+	var row = this._keys.length - 1;
+	var key = this._keys[row];
+    var storagePerson = JSON.parse(localStorage.getItem(policyNumber));
+    if(storagePerson == null){
+    	  return ;
+    }
+	var para = document.createElement("tr");
+    var element = document.getElementById("tablePolicy");
+    element.appendChild(para);
+    createTh(storagePerson._name, row);
+    createTh(storagePerson._typeInsurance, row);
+    createTh(storagePerson._date, row);
+    createTh(storagePerson._number, row);
+    createTh(storagePerson._premium, row);
+    createTh(storagePerson._discount, row);
 }
 LocalStorage.prototype.showTable = function(){
 	var row = 0;
-	console.log(this._keys);
 	this._keys.forEach(function(element){
-	  var storagePerson = JSON.parse(localStorage.getItem(element));
-	  if(storagePerson == null){
-		  return;
-	  }
-	 var para = document.createElement("tr");
-	 var element = document.getElementById("tablePolicy");
-	 element.appendChild(para);
-	 createTh(storagePerson._name, row);
-	 createTh(storagePerson._typeInsurance, row);
-	 createTh(storagePerson._date, row);
-	 createTh(storagePerson._policyNumber, row);
-	 createTh(storagePerson._premium, row);
-	 createTh(storagePerson._discount, row);
-	 row++;
+		createTr(element);
 	});
 }
 LocalStorage.prototype.deleteTable = function(){
@@ -39,8 +42,10 @@ LocalStorage.prototype.delete = function(){
 }
 LocalStorage.prototype.deleteKey = function(row){
 	for(var i = 0; i<this._keys.length; i++){
-		if(row == this._keys[i]){
-			this._keys.splice(i, i + 1);	
+		if(row === this._keys[i]){
+			console.log("i " + i + " " + (i+1));
+			this._keys.splice(i, 1);
+			break;
 		}
 	}
 }
@@ -68,3 +73,11 @@ function createTh(value, row){
 	var element = document.getElementsByTagName("tr")[row];
 	element.appendChild(para);
 }
+
+//LocalStorage.prototype.xxxxx = function(value, row){
+//	var para = document.createElement("th");
+//	var node = document.createTextNode(value);
+//	para.appendChild(node);
+//	var element = document.getElementsByTagName("tr")[row];
+//	element.appendChild(para);
+//}
