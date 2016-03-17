@@ -8,10 +8,10 @@ function init() {
 	   var policyNumber = document.getElementById("policyNumber").value;
 	   var premium = parseInt(document.getElementById("premium").value);
 	   var discount = parseInt(document.getElementById("discount").value);
-       var form = new Form(name, typeInsurance, date, policyNumber, premium, discount);
-	   form.logName();
+       var policy = new Policy(name, typeInsurance, date, policyNumber, premium, discount);
+	   policy.logName();
 	   if(Validator.checkPolicy(typeInsurance, policyNumber)){
-	   		storage.set(form);
+	   		storage.set(policy);
 	   }
    };
    document.getElementById("showTable").onclick = function () {

@@ -2,9 +2,9 @@
 function LocalStorage(){
   this._keys = new Array();
 }
-LocalStorage.prototype.set = function(form){
-	this._keys.push(form._policyNumber);
-	localStorage.setItem(form._policyNumber, JSON.stringify(form));
+LocalStorage.prototype.set = function(policy){
+	this._keys.push(policy._policyNumber);
+	localStorage.setItem(policy._policyNumber, JSON.stringify(policy));
 }
 LocalStorage.prototype.showTable = function(){
 	var row = 0;
@@ -30,7 +30,7 @@ LocalStorage.prototype.deleteTable = function(){
 	var parent = document.getElementById("tablePolicy");
 	while(parent.lastChild){
 		parent.removeChild(parent.lastChild);
-	}	
+	}
 }
 LocalStorage.prototype.delete = function(){
 	this._keys = [];
